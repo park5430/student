@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous"></script>
+    <style>
+        .btn {
+            position: absolute;
+            bottom: 60%;
+            left: 50%;
+        }
+        .js-numbers{
+        width: 350px; margin: 0 auto;
+        display: flex;
+        /* 자식 요소가 많아져 overflow 됐을 때, 내용을 줄바꿈으로 조치해준다 */
+        flex-wrap: wrap;
+        }
+        .js-numbers > div{
+            width: 50px; height: 36px; margin: 5px;
+            padding: 5px; text-align: center;
+        }
+        .js-numbers > div > p{
+            margin: 0; line-height: 40px;
+            border: 1px solid gray; border-radius: 8px;
+            color: black;background-color: white;
+        }
+        .js-reset{
+            position: absolute;
+            left: 50.5%;
+            bottom: 55%;
+            width: 60px;
+            height: 20px;
+            color: white;
+            background-color: orangered;
+            border: none; border-radius: 6px;    
+        }
+    </style>
+    
+
+    <script>
+        
+        function randomNumber(){
+                var num = parseInt(Math.random()*21 + 1)
+                var numId = "no-" + num
+                console.log(num);
+                $("#"+numId+">p").css({
+                    "background" : "skyblue",
+                    "color" : "white"
+                });
+        }
+        function createWholeNumbers(){
+            for(let i =1; i <= 21; i++){
+                const numDiv = $(`<div id="no-${i}"></div>`)
+                numDiv.html(`<p class="number">${i}</p>`)
+                $(".js-numbers").append(numDiv)
+            }
+        }        
+        function resetNumbers(){
+        $("p").css({
+            "color": "black",
+            "background-color": "white"
+        }); 
+        }
+        
+        $(document).ready(function(){ 
+            createWholeNumbers();
+            $(".btn").click(randomNumber);
+            $(".js-reset").click(function(){
+                resetNumbers()
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="js-numbers"></div>
+    <input type="button" value="추첨하기" class="btn"></input>
+    <button class="js-reset">초기화</button>
+</body>
+</html>
