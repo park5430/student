@@ -6,24 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Black Jack</title>
     <script>
-        const boxesContainer = document.getElementById('boxes')
-        const btn = document.getElementById('lottoBtn')
-        btn.addEventListener('click', () => boxesContainer.classList.toggle('big'))
-
-        function createBoxes() {
-            for (let i = 0; i < 4; i++) {
-                for (let j = 0; j < 4; j++) {
-                    const box = document.createElement('div')
-                    box.classList.add('box')
-                    box.style.backgroundPosition = `${-j * 150}px ${-i * 150}px`
-                    boxesContainer.appendChild(box)
-                }
-            }
-        }
-
-
-
-
         function showLotto() {
 
             let lotto = [];
@@ -115,7 +97,7 @@
             border-radius: 50%;
             width: 100px;
             height: 100px;
-            border: rgb(130, 0, 0)44)tset;
+            border: rgb(130, 0, 0);
             background: rgb(204, 0, 0);
             color: rgb(228, 228, 228);
             z-index: 100;
@@ -152,7 +134,7 @@
 <body>
     <div>
         <button type="button" id="lottoBtn" onclick="showLotto()">Good<br>Luck<br>👍</button><br>
-        <div id="boxes" class="boxes big"></div>
+        
     </div>
     <div id="lottoTable">
     </div>
