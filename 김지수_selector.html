@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200&display=swap');
+    body {width: 100%; height: 100vh; background: linear-gradient(rgb(44, 249, 198), rgb(26, 158, 211)) no-repeat; overflow: hidden;}
+    .count-wrap {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -70%); text-align: center; width: 100%;}
+    .count-wrap h1 {position: relative; width: 100%; font-size: 40px; color: #fff; font-weight: 200; font-family: 'Raleway', sans-serif; top: 50px; opacity: 0; overflow: hidden;}
+    .count-wrap h1 span {position: relative; top: 50px; letter-spacing: -10px;}
+    .count-wrap .count-num {position: relative; top: 50px; color: #fff; font-size: 40px; font-family: 'Raleway', sans-serif; opacity: 0;}
+    .count-wrap button {position: relative;  border: 0 solid #fff; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0); outline: 1px solid; outline-color: rgba(255, 255, 255, 0.5); outline-offset: 0px; text-shadow: none; transition: all 1.25s cubic-bezier(0.19, 1, 0.22, 1); font-family: 'Raleway', sans-serif; background-color: transparent; width: 200px; height: 60px; color: #fff; cursor: pointer; font-size: 20px; opacity: 0; top: 50px;}
+    .count-wrap button:hover {border: 1px solid #fff; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2); outline-color: rgba(255, 255, 255, 0); outline-offset: 15px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+  <div class="count-wrap">
+    <h1>
+      <span>C</span>
+      <span>l</span>
+      <span>i</span>
+      <span>c</span>
+      <span style="margin-right: 10px;">k</span>
+      <span>t</span>
+      <span>h</span>
+      <span style="margin-right: 10px;">e</span>
+      <span>b</span>
+      <span>u</span>
+      <span>t</span>
+      <span>t</span>
+      <span>o</span>
+      <span>n</span>
+    </h1>
+     <!-- <h1>Click the button</h1> -->
+    <p class="count-num">0</p>
+    <div class="count-btn">
+      <button class="generate">CLICK</button>
+    </div>
+  </div>
+  
+  <script>
+    gsap.to("h1 span", {duration: 1, top: 0, stagger: 0.05});
+    gsap.to(".count-wrap h1", { duration: .5, top: 0, opacity: 1});
+    gsap.to(".count-wrap .count-num", {delay: .3, duration: .5, top: 0, opacity: 1});
+    gsap.to(".count-wrap button", {delay: .5, duration: .5, opacity: 1, top: 0});
+    let generateNum = document.querySelector(".count-num");
+    let button = document.querySelector(".generate");
+
+    function generator(){
+      const randomNum = Math.floor(Math.random() * 21 + 1);
+      generateNum.innerHTML = randomNum;
+    }
+
+    button.addEventListener("click", generator);  
+
+    $(".count-wrap button").on("click", function(){
+      $(".count-wrap h1").text("Congratulations!")
+    });
+  </script>
+</body>
+</html>
