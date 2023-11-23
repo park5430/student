@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Jack</title>
+    <script>
+        const boxesContainer = document.getElementById('boxes')
+        const btn = document.getElementById('lottoBtn')
+        btn.addEventListener('click', () => boxesContainer.classList.toggle('big'))
+
+        function createBoxes() {
+            for (let i = 0; i < 4; i++) {
+                for (let j = 0; j < 4; j++) {
+                    const box = document.createElement('div')
+                    box.classList.add('box')
+                    box.style.backgroundPosition = `${-j * 150}px ${-i * 150}px`
+                    boxesContainer.appendChild(box)
+                }
+            }
+        }
+
+
+
+
+        function showLotto() {
+
+            let lotto = [];
+            while (lotto.length < 1) {
+                let temp = Math.floor(Math.random() * 21) + 1;
+                if (!lotto.includes(temp)) {
+                    lotto.push(temp);
+                };
+            };
+
+            // lotto.sort((a, b) => a - b);
+
+            for (let i = 0; i <= lotto.length - 1; i++) {
+                if (lotto[i] <= 10) {
+                    document.querySelector("#lottoTable").innerHTML += `<div id="yellow">${lotto[i]}</div>`
+                } else if (lotto[i] <= 20) {
+                    document.querySelector("#lottoTable").innerHTML += `<div id="green">${lotto[i]}</div>`
+                } else {
+                    document.querySelector("#lottoTable").innerHTML += `<div id="red">${lotto[i]}</div>`
+                }
+            };
+            return lotto;
+        };
+    </script>
+    <style>
+        #yellow {
+            background: radial-gradient(rgb(255, 187, 0), rgb(255, 187, 0));
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            float: left;
+            margin: 20px;
+            text-align: center;
+            line-height: 100px;
+            font-size: xx-large;
+            color: rgb(0, 0, 0);
+        }
+
+        #red {
+            background: radial-gradient(rgb(255, 0, 0), red);
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            float: left;
+            margin: 20px;
+            text-align: center;
+            line-height: 100px;
+            font-size: xx-large;
+            color: white;
+        }
+
+        #grey {
+            background: radial-gradient(rgb(128, 128, 128), grey);
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            float: left;
+            margin: 20px;
+            text-align: center;
+            line-height: 100px;
+            font-size: xx-large;
+            color: white;
+        }
+
+        #green {
+            background: radial-gradient(rgb(0, 128, 0), green);
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            float: left;
+            margin: 20px;
+            text-align: center;
+            line-height: 100px;
+            font-size: xx-large;
+            color: white;
+        }
+
+        #lottoBtn {
+            position: absolute;
+            left: 50%;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            border: rgb(130, 0, 0)44)tset;
+            background: rgb(204, 0, 0);
+            color: rgb(228, 228, 228);
+            z-index: 100;
+        }
+
+        #lottoTable {
+            position: absolute;
+            left: 49%;
+            top: 30%;
+            width: 840px;
+        }
+
+        .boxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            height: 500px;
+            width: 500px;
+            position: relative;
+            transition: 0.4s ease;
+        }
+
+        .boxes.big {
+            width: 600px;
+            height: 600px;
+        }
+
+        .boxes.big .box {
+            transform: rotateZ(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button type="button" id="lottoBtn" onclick="showLotto()">Good<br>Luck<br>👍</button><br>
+        <div id="boxes" class="boxes big"></div>
+    </div>
+    <div id="lottoTable">
+    </div>
+</body>
+
+</html>
