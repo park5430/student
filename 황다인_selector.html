@@ -68,7 +68,7 @@ function start(){
   selected = names[Math.random() * count | 0].toUpperCase();
   covered = selected.replace(/[^\s]/g, '_');
   document.body.innerHTML = covered;
-  timer = setInterval(decode, 50);
+  timer = setInterval(decode, 30);
 }
 
 function decode(){
