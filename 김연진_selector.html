@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+    <title>SURPRISE EVENT</title>
+
+    <link rel="stylesheet" href="김연진_selector.css" />
+
+    <script src="김연진_selector.js">
+    </script>
+    
+</head>
+<body>
+    
+    <h1> SURPRISE EVENT !</h1>
+    <h2>Who wins in this event?</h2>
+    <div class ="ball_box">
+    <div class="ball">
+        <span id="num"></span>
+    </div>
+    <button id="btn" class="magic" onclick="document.getElementById('num').innerHTML = Math.floor((Math.random() * 21) + 1);">Click</button>
+    </div>
+</body>
+</html>
