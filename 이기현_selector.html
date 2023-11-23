@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>추첨기</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <style>
+      #container {
+        width: 1200px;
+        border: 1px solid black;
+        display: flex;
+        justify-content: space-around;
+      }
+      #ticket1,
+      #ticket2,
+      #ticket3 {
+        width: 350px;
+        height: 175px;
+        background-color: white;
+        border: 1px solid white;
+      }
+
+      #ticket1 > div,
+      #ticket2 > div,
+      #ticket3 > div {
+        width: 120px;
+        height: 90px;
+        background-color: white;
+        border: 1px solid white;
+      }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <script>
+      const selectNum = new Array();
+
+      function StratLotto() {
+        for (var i = 1; selectNum.length < 3; i++) {
+          randomNum = parseInt(Math.random() * 21) + 1;
+          if (selectNum.indexOf(randomNum) < 0) {
+            selectNum.push(randomNum);
+          }
+        }
+
+        console.log(selectNum);
+        $("#ticket1, #ticket2, #ticket3").css({ "background-color": "gold" });
+        $("#ticket1 > div, #ticket2 > div, #ticket3 > div").css({
+          "background-color": "grey",
+        });
+      }
+
+      $(function () {
+        $("#ticket1 > div").on({
+          mouseover: function () {
+            var textElem1 = document.getElementById("text1");
+            textElem1.innerHTML = selectNum[0] + "번 <br> 당첨!";
+            $("#ticket1 > div").css({ "background-color": "white" });
+          },
+          "mouseout blur": function () {
+            var textElem1 = document.getElementById("text1");
+            textElem1.innerHTML = selectNum[0] + "번 <br> 당첨!";
+            $("#ticket1 > div").css({ "background-color": "grey" });
+            $("#ticket1 > div").css({ color: "grey" });
+          },
+        });
+
+        $("#ticket2 > div").on({
+          mouseover: function () {
+            var textElem2 = document.getElementById("text2");
+            textElem2.innerHTML = selectNum[1] + "번 <br> 꽝!";
+            $("#ticket2 > div").css({ "background-color": "white" });
+          },
+          "mouseout blur": function () {
+            var textElem2 = document.getElementById("text2");
+            textElem2.innerHTML = selectNum[1] + "번 <br> 당첨!";
+            $("#ticket2 > div").css({ "background-color": "grey" });
+            $("#ticket2 > div").css({ color: "grey" });
+          },
+        });
+        $("#ticket3 > div").on({
+          mouseover: function () {
+            var textElem3 = document.getElementById("text3");
+            textElem3.innerHTML = selectNum[2] + "번 <br> 꽝!";
+            $("#ticket3 > div").css({ "background-color": "white" });
+          },
+          "mouseout blur": function () {
+            var textElem3 = document.getElementById("text3");
+            textElem3.innerHTML = selectNum[2] + "번 <br> 당첨!";
+            $("#ticket3 > div").css({ "background-color": "grey" });
+            $("#ticket3 > div").css({ color: "grey" });
+          },
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <center>
+      <div id="container">
+        <div id="ticket1"><div id="text1"></div></div>
+        <div id="ticket2"><div id="text2"></div></div>
+        <div id="ticket3"><div id="text3"></div></div>
+      </div>
+      <p>
+        <input type="button" value="추첨 시작" onclick="StratLotto()" />
+        <input type="button" value="새로고침" onclick="location.reload()" />
+      </p>
+    </center>
+  </body>
+</html>
