@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="곽별이_selector.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      button {
+        margin-top: 50px;
+        font-size: 20px;
+        padding: 10px 20px;
+        border: none;
+        top: 50%;
+        background-color: #5a5a5a;
+        color: #dddddd;
+        border-radius: 10px;
+      }
+      button:active {
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+      }
+
+      button:hover {
+        outline-color: transparent;
+        outline-style: solid;
+        background-color: #000000;
+        color: #dddddd;
+        transition: 0.4s;
+      }
+      #result {
+        font-size: 24px;
+        margin-top: 20px;
+      }
+    </style>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+    ></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#btnStart").click(function () {
+          var num = Math.floor(Math.random() * 21) + 1;
+          $("#result").text("추첨된 번호: " + num);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button type="button" id="btnStart">추첨하기</button>
+    <div id="result"></div>
+  </body>
+</html>
