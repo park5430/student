@@ -1,0 +1,37 @@
+.div-lotteryboard {
+  width: 400px;
+  background-color: rgb(159, 109, 0);
+  text-align: center;
+  padding: 2px;
+  color: #fff;
+}
+
+.div-lotteryboard-inner {
+  margin: auto;
+  border: 2px dashed #dd9b9b;
+  box-sizing: border-box;
+}
+
+.div-lottery {
+  display: inline-block;
+  border: 1px solid #635252;
+  padding: 10px 40px 5px;
+  margin: 10px;
+  width: 20%;
+}
+
+.div-lottery-winner-number {
+  font-size: 40px;
+  color: #ffff00;
+  background-color: #000;
+  text-align: center;
+  width: 100%;
+  line-height: 40px;
+  padding-top: 5px;
+  margin-top: 2px;
+}
+
+.lotterybtn {
+    padding: 10px 20px;
+    font-size: 14px;
+}
