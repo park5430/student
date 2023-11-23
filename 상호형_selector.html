@@ -26,6 +26,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            background-color: whitesmoke;
+            z-index: 1;
         }
 
         #buttons {
@@ -34,7 +36,7 @@
         }
 
         #namePlaceholder {
-            z-index: 4;
+            z-index: 3;
         }
 
         .btn-blue {
@@ -48,7 +50,7 @@
             width: 500px;
             top: -100%;
             left: -100%;
-            z-index: 0;
+            z-index: 2;
         }
     </style>
 
@@ -56,7 +58,7 @@
 
 <body>
     <div id="container">
-        <h1 id="namePlaceholder">Your Name</h1>
+        <h1 id="namePlaceholder">ezAWS</h1>
         <div id="buttons" class="text-center">
             <button class="btn btn-blue" onclick="startRandomNames()">티켓을 누구에게?!</button>
             <button id="stop" class="btn btn-danger" onclick="stopRandomNames()" disabled>멈춰!</button>
@@ -65,19 +67,34 @@
     <img class="ticketImg" src="ticket.png" alt="">
 
 
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+
         var animationInterval;
         var displayedNames = [];
+        //21명 이름
+        var names = [
+            "상호형", "황다인", "이민영", "황예원", "류지혜",
+            "현승빈", "김연진", "김민규", "김민호", "전윤호",
+            "조주현", "이주호", "김지수", "조주희", "이규현",
+            "최우혁", "이기현", "이준호", "김남규", "김화용", "이준호"
+        ];
 
+        //함수 시작시 스탑버튼 "disabled" remove
         function startRandomNames() {
+
             $("#stop").removeAttr("disabled");
+            //티켓 위치 초기화
+            $(".ticketImg").css({
+                "top": "-100%",
+                "left": "-100%"
+            });
+
             animationInterval = setInterval(function () {
                 showRandomNames();
-            }, 35);
+            }, 65);
         }
 
         function stopRandomNames() {
@@ -93,19 +110,12 @@
         }
 
         function showRandomNames() {
-            
+
             $("#namePlaceholder")
                 .css({
                     fontSize: "250%",
                     color: ""
-                })
-
-            var names = [
-                "상호형", "황다인", "이민영", "황예원", "류지혜",
-                "현승빈", "김연진", "김민규", "김민호", "전윤호",
-                "조주현", "이주호", "김지수", "조주희", "이규현",
-                "최우혁", "이기현", "이준호", "김남규", "김화용", "이준호"
-            ];
+                });
 
             names = shuffleArray(names);
 
@@ -114,9 +124,7 @@
                     $("#namePlaceholder").text(names[index]);
                 } else { }
             }
-
             showName(0);
-
         }
 
         // 배열을 랜덤으로 섞는 함수
@@ -129,10 +137,12 @@
             }
             return array;
         }
+
+        //이미지를 인덱스위치로 이동
         function ticketImg_show() {
             $(".ticketImg").css({
                 "top": "30%",
-                "left": "50%"
+                "left": "50%",
             });
         }
 
