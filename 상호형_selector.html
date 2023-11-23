@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>돌려 돌려~ 돌려!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+        }
+
+        #container {
+            width: 400px;
+            height: 250px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #buttons {
+            margin-top: 20px;
+            z-index: 3;
+        }
+
+        #namePlaceholder {
+            z-index: 4;
+        }
+
+        .btn-blue {
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .ticketImg {
+            position: fixed;
+            width: 500px;
+            top: -100%;
+            left: -100%;
+            z-index: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <h1 id="namePlaceholder">Your Name</h1>
+        <div id="buttons" class="text-center">
+            <button class="btn btn-blue" onclick="startRandomNames()">티켓을 누구에게?!</button>
+            <button id="stop" class="btn btn-danger" onclick="stopRandomNames()" disabled>멈춰!</button>
+        </div>
+    </div>
+    <img class="ticketImg" src="ticket.png" alt="">
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        var animationInterval;
+        var displayedNames = [];
+
+        function startRandomNames() {
+            $("#stop").removeAttr("disabled");
+            animationInterval = setInterval(function () {
+                showRandomNames();
+            }, 35);
+        }
+
+        function stopRandomNames() {
+            clearInterval(animationInterval);
+            ticketImg_show();
+            $("#namePlaceholder")
+                .css({
+                    fontSize: "500%",
+                    color: "skyblue"
+                });
+            alert("축하합니다~//");
+
+        }
+
+        function showRandomNames() {
+            
+            $("#namePlaceholder")
+                .css({
+                    fontSize: "250%",
+                    color: ""
+                })
+
+            var names = [
+                "상호형", "황다인", "이민영", "황예원", "류지혜",
+                "현승빈", "김연진", "김민규", "김민호", "전윤호",
+                "조주현", "이주호", "김지수", "조주희", "이규현",
+                "최우혁", "이기현", "이준호", "김남규", "김화용", "이준호"
+            ];
+
+            names = shuffleArray(names);
+
+            function showName(index) {
+                if (index < names.length) {
+                    $("#namePlaceholder").text(names[index]);
+                } else { }
+            }
+
+            showName(0);
+
+        }
+
+        // 배열을 랜덤으로 섞는 함수
+        function shuffleArray(array) {
+            for (var i = array.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+            return array;
+        }
+        function ticketImg_show() {
+            $(".ticketImg").css({
+                "top": "30%",
+                "left": "50%"
+            });
+        }
+
+    </script>
+</body>
+
+</html>
