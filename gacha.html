@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body{
+  letter-spacing: 9px;
+  font-size: 60px;
+  text-align:center;
+  line-height:100vh;
+  font-family: Courier;
+}
+
+html{
+  background: #000;
+  color: #fff;
+}
+
+button {
+    background: transparent;
+    color: #fff;
+    border: 1px solid;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+button:hover {
+    background: #fff;
+    color:#000;
+    transition: all 0.5s ease-in-out;
+}
+</style>
+<body>
+  <button onClick="start()">Start</button>
+</body>
+<script>
+  let names = [
+"Number One",
+"Number Two",
+"Number Three",
+"Number Four",
+"Number Five",
+"Number Six",
+"Number Seven",
+"Number Eight",
+"Number Nine",
+"Number Ten",
+"Number Eleven",
+"Number Twelve",
+"Number Thirteen",
+"Number Fourteen",
+"Number Fifteen",
+"Number Sixteen",
+"Number Seventeen",
+"Number Eighteen",
+"Number Nineteen",
+"Number Twenty",
+"Number TwentyOne",
+];
+  
+count = names.length;
+
+function start(){
+  selected = names[Math.random() * count | 0].toUpperCase();
+  covered = selected.replace(/[^\s]/g, '_');
+  document.body.innerHTML = covered;
+  timer = setInterval(decode, 50);
+}
+
+function decode(){
+  newtext = covered.split('').map(changeLetter()).join('');
+  document.body.innerHTML = newtext;
+  if(selected == covered){
+    clearTimeout(timer);
+    winnerRevealed();
+    return false;
+  }
+  covered = newtext;
+}
+
+function changeLetter(){
+  replacements = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz%!@&*#_ ';
+  replacementsLen = replacements.length;
+  return function(letter, index, err){
+    return selected[index] == letter 
+       ? letter 
+       : replacements[Math.random() * replacementsLen | 0];
+  }
+}
+
+function winnerRevealed(){
+  alert('축하합니다!');
+}
+</script>
+</html>
