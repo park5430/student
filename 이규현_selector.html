@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뽑기</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(function () {
+            var generateNum = document.querySelector(".countNumber");
+            var button = document.querySelector(".roll");
+
+            function numGen() {
+                var randNum = Math.floor(Math.random() * 21) + 1;
+                generateNum.innerHTML = "결과: " + randNum;
+            }
+            button.addEventListener("click", numGen);
+        });
+
+
+    </script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .countNumber {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .roll {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .roll:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>추첨을 시작하세요!</h1>
+    <p class="countNumber">0</p>
+    <button class="roll">뽑기</button>
+</body>
+
+</html>
